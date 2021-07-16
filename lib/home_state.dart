@@ -8,4 +8,14 @@ class HomeState {
     required this.status,
     required this.count,
   });
+
+  HomeState copyWith({
+    HomeStatus? status,
+    int? count,
+  }) {
+    return HomeState(
+      status: status ?? this.status,
+      count: count ?? this.count,
+    );
+  }
 }

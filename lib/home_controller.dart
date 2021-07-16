@@ -6,9 +6,9 @@ class HomeController extends MyState<HomeState> {
   HomeController() : super(HomeState(status: HomeStatus.empty, count: 0));
 
   Future<void> incrementCounter() async {
-    update(HomeState(status: HomeStatus.loading, count: super.state.count));
+    update(super.state.copyWith(status: HomeStatus.loading));
     await Future.delayed(Duration(seconds: 1));
-    update(HomeState(status: HomeStatus.success, count: ++super.state.count));
+    update(super.state.copyWith(status: HomeStatus.success, count: ++super.state.count));
   }
 
   int get count => super.state.count;
